@@ -1,9 +1,10 @@
 
 export async function renderFib() {
-    fibs(5);
+    fibs(10);
 }
 
 async function fibs(n) {
+
     // iterative version:
     // TODO: each time throught the for loop, display in three separate cards across the screen:
     //      1. value i, prev, current
@@ -29,6 +30,7 @@ async function fibs(n) {
         arr.push(current);
     }
     displayArray(arr);
+    
 }
 
 async function fibsRecursive(n) {
@@ -37,7 +39,15 @@ async function fibsRecursive(n) {
     //      1. this functions value for n
     //      2. an updated call stack
     //      3. updated fib array
-}
+
+    // TODO: Figure out how to track this with an array
+    let thisFib;
+    if(n < 2) return n;
+    else {
+        thisFib = fibsRecursive(n-1) + fibsRecursive(n-2)
+        return thisFib;
+    };
+} 
 
 function displayArray(arr) {
     // for displaying the array
@@ -45,5 +55,5 @@ function displayArray(arr) {
     arr.forEach(i => {
         
         console.log(track++ + ": " + i);
-    })
+    });
 }
